@@ -1,5 +1,6 @@
 <template>
     <div class="column">
+        <!-- Parent -->
         <q-select
             :options="parents"
             v-model="parent"
@@ -14,6 +15,24 @@
                 </q-item>
             </template>
         </q-select>
+        <!-- Parent -->
+        <!-- Child -->
+        <q-select
+            :options="parents"
+            v-model="parent"
+            @filter="filterFn"
+            @filter-abort="abortFilterFn"
+        >
+            <template v-slot:no-option>
+                <q-item>
+                    <q-item-section class="text-grey">
+                        No results
+                    </q-item-section>
+                </q-item>
+            </template>
+        </q-select>
+        <!-- Child -->
+
         <q-btn icon="fa fa-times" class="text-red" @click="onRemove"></q-btn>
     </div>
 </template>
@@ -53,7 +72,8 @@ export default {
     props: {
         reference: { type: String, default: "location" },
         modelValue: {
-            default: () => ({ parent: null, child: null }), type: Object,
+            default: () => ({ parent: null, child: null }),
+            type: Object,
         },
     },
     data() {
