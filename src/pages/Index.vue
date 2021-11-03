@@ -1,19 +1,17 @@
 <template>
     <q-page class="column">
-        <Locations v-model="locations" />
+        <parent-children v-model="locations" service="location" />
         <div class="row"><pre>{{ locations }}</pre></div>
     </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import Locations from "src/components/Locations.vue";
+import ParentChildren from "src/components/ParentChildren.vue";
 
 export default defineComponent({
     name: "PageIndex",
-    components: { Locations },
-    data() {
-        return { locations: [{}] };
-    },
+    components: { ParentChildren },
+    data() { return { locations: [{}] }; },
 });
 </script>
