@@ -1,17 +1,19 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-  </q-page>
+    <q-page class="column">
+        <Locations v-model="locations" />
+        <div class="row"><pre>{{ locations }}</pre></div>
+    </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
+import Locations from "src/components/Locations.vue";
 
 export default defineComponent({
-  name: 'PageIndex'
-})
+    name: "PageIndex",
+    components: { Locations },
+    data() {
+        return { locations: [{}] };
+    },
+});
 </script>

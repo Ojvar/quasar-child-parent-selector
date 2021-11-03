@@ -2,6 +2,9 @@
     <div class="column">
         <q-input v-model="country"></q-input>
         <q-input v-model="city"></q-input>
+        <q-btn icon="fa fa-times" class="text-red" @click="onRemove"></q-btn>{
+
+        }
     </div>
 </template>
 
@@ -9,38 +12,27 @@
 export default {
     props: {
         modelValue: {
+            default: () => ({ country: null, city: null }),
             type: Object,
-            default: () => ({
-                country: "w",
-                city: "z",
-            }),
         },
     },
-
     computed: {
         country: {
-            set(value) {
-                this.$emit("update:model-value", {
-                    ...this.modelValue,
-                    country: value,
-                });
-            },
-            get() {
-                return this.modelValue.country;
-            },
+            set(value) { this.updateModelValue("country", value); },
+            get() { return this.modelValue.country; },
         },
-
         city: {
-            set(value) {
-                this.$emit("update:model-value", {
-                    ...this.modelValue,
-                    city: value,
-                });
-            },
-            get() {
-                return this.modelValue.city;
-            },
+            set(value) { this.updateModelValue("city", value); },
+            get() { return this.modelValue.city;},
         },
+    },
+    methods: {
+        updateModelValue(key, value) {
+            this.$emit("update:model-value", { ...this.modelValue, [key]: value,});
+        },
+        onRemove(){
+            this.$emit("on-remove", this.modelValue);
+        }
     },
 };
 </script>

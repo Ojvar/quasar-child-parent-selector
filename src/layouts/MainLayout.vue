@@ -18,32 +18,17 @@
     </q-header>
 
     <q-page-container class="q-pa-md q-ma-md">
-      <Locations v-model="locations" />
-      <pre>
-        {{ locations }}
-      </pre>
-
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import Locations from "src/components/Locations.vue";
-
-export default {
+  export default {
   name: "MainLayout",
-
-  components: {
-    Locations,
-  },
-
   methods: {
-    toggleLeftDrawer() {
-      leftDrawerOpen.value = !leftDrawerOpen.value;
-    },
+    toggleLeftDrawer() {leftDrawerOpen.value = !leftDrawerOpen.value;},
   },
-
   data() {
     return {
       locations: [
