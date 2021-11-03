@@ -25,10 +25,10 @@ const ReferenceService = {
             setTimeout(() => {
                 switch (service.toLowerCase()) {
                     case "location":
-                        return ["Iran", "Everywhere else Iran"];
+                        resolve(["Iran", "Everywhere else Iran"]);
 
                     default:
-                        return [];
+                        resolve([]);
                 }
             }, 2000);
         });
@@ -38,10 +38,10 @@ const ReferenceService = {
             setTimeout(() => {
                 switch (service.toLowerCase()) {
                     case "location":
-                        return ["Qazvin", "Everywhere else Qazvin"];
+                        resolve(["Qazvin", "Everywhere else Qazvin"]);
 
                     default:
-                        return [];
+                        resolve([]);
                 }
             }, 2000);
         });
@@ -53,8 +53,7 @@ export default {
     props: {
         reference: { type: String, default: "location" },
         modelValue: {
-            default: () => ({ parent: null, child: null }),
-            type: Object,
+            default: () => ({ parent: null, child: null }), type: Object,
         },
     },
     data() {

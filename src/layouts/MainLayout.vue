@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf q-pa-md">
+  <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -24,10 +24,12 @@
 </template>
 
 <script>
-  export default {
+export default {
   name: "MainLayout",
   methods: {
-    toggleLeftDrawer() {leftDrawerOpen.value = !leftDrawerOpen.value;},
+    toggleLeftDrawer() {
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    },
   },
   data() {
     return {
